@@ -63,7 +63,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No dashboard changes"
           else
-            git pull --rebase
             git commit -m "Regenerate dashboard"
-            git push
+            git push || (git pull --rebase && git push)
           fi
