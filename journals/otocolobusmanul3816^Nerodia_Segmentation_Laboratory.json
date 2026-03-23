@@ -1,0 +1,374 @@
+{
+  "$schema": "https://raw.githubusercontent.com/pieper/RepoClerk/main/schemas/journal.schema.json",
+  "schemaVersion": 1,
+  "nameWithOwner": "otocolobusmanul3816/Nerodia_Segmentation_Laboratory",
+  "journalUpdatedAt": "2026-03-23T16:54:01Z",
+  "pushedAt": "2026-03-18T19:53:18Z",
+  "openIssues": [
+    {
+      "number": 1,
+      "title": "Houstoun Cervical Vertebrae",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/1",
+      "author": "otocolobusmanul3816",
+      "assignees": [
+        "otocolobusmanul3816"
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Franson L-Dentary",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/2",
+      "author": "WilliamFranson",
+      "assignees": [
+        "WilliamFranson"
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Wheelton L&R - Splenial",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/3",
+      "author": "sophiawheelton",
+      "assignees": [
+        "sophiawheelton"
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Klingler Parabasisphenoid",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/4",
+      "author": "Corinne8505",
+      "assignees": [
+        "Corinne8505"
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Eliason Exoccipital",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/5",
+      "author": "CalebE975",
+      "assignees": [
+        "CalebE975"
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Chaston L - Maxilla",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/6",
+      "author": "KoyChaston",
+      "assignees": [
+        "KoyChaston"
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Savitzky stapes",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/7",
+      "author": "savitzky",
+      "assignees": [
+        "savitzky"
+      ]
+    },
+    {
+      "number": 8,
+      "title": "PerryLandR-postorbital",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/8",
+      "author": "Aubynp",
+      "assignees": [
+        "Aubynp"
+      ]
+    },
+    {
+      "number": 9,
+      "title": "murat test",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/9",
+      "author": "muratmaga",
+      "assignees": [
+        "muratmaga"
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Preston Right Dentary",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/10",
+      "author": "a02423885-cloud",
+      "assignees": [
+        "a02423885-cloud"
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Baird L-Palatine",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/11",
+      "author": "sydbaird04-ai",
+      "assignees": [
+        "sydbaird04-ai"
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Tietjen L&R- Postorbital",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/12",
+      "author": "petertietjen",
+      "assignees": [
+        "petertietjen"
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Lamb R-Prootic",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/13",
+      "author": "Brity858",
+      "assignees": [
+        "Brity858"
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Dooley R - Pterygoid",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/14",
+      "author": "deborahdelarosa",
+      "assignees": [
+        "deborahdelarosa"
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Smith, R- Maxilla",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/15",
+      "author": "smithdkate-lab",
+      "assignees": [
+        "smithdkate-lab"
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Stewart Septomaxilla",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/16",
+      "author": "elliestew32-sudo",
+      "assignees": [
+        "elliestew32-sudo"
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Numbers R-Quadrate",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/17",
+      "author": "hapymelz",
+      "assignees": [
+        "hapymelz"
+      ]
+    },
+    {
+      "number": 18,
+      "title": "Halbritter L- Pterygoid",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/18",
+      "author": "katehalskool-lab",
+      "assignees": [
+        "katehalskool-lab"
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Labrum Supraoccipital",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/19",
+      "author": "morganlabrum",
+      "assignees": [
+        "morganlabrum"
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Hackman Frontal",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/20",
+      "author": "jacobhackman5",
+      "assignees": [
+        "jacobhackman5"
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Culler L - prootic",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/21",
+      "author": "benculler",
+      "assignees": [
+        "benculler"
+      ]
+    },
+    {
+      "number": 22,
+      "title": "Hoggan Premaxilla",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/22",
+      "author": "alyssahoggan",
+      "assignees": [
+        "alyssahoggan"
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Gilbert L - Quadrate",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/23",
+      "author": "EmilyG01",
+      "assignees": [
+        "EmilyG01"
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Price - Parietal",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/24",
+      "author": "Tprice30",
+      "assignees": [
+        "Tprice30"
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Weaver L - Prefrontal",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/25",
+      "author": "mweav27",
+      "assignees": [
+        "mweav27"
+      ]
+    },
+    {
+      "number": 26,
+      "title": "Kocherhans nasal",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/26",
+      "author": "lizzykocherhans",
+      "assignees": [
+        "lizzykocherhans"
+      ]
+    },
+    {
+      "number": 27,
+      "title": "Talbot Right Compound",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/27",
+      "author": "hollyt-1125",
+      "assignees": [
+        "hollyt-1125"
+      ]
+    },
+    {
+      "number": 28,
+      "title": "Thorley R-Ectopterygoid",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/28",
+      "author": "CorruptSun",
+      "assignees": [
+        "CorruptSun"
+      ]
+    },
+    {
+      "number": 30,
+      "title": "Sessions L/R Angular",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/30",
+      "author": "thesmellycat",
+      "assignees": [
+        "thesmellycat"
+      ]
+    }
+  ],
+  "openPRs": [
+    {
+      "number": 31,
+      "title": "issue-2",
+      "isDraft": false,
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/31",
+      "author": "WilliamFranson",
+      "closingIssue": {
+        "number": 2,
+        "title": "Franson L-Dentary",
+        "repoOwner": "otocolobusmanul3816"
+      }
+    },
+    {
+      "number": 32,
+      "title": "issue-17",
+      "isDraft": false,
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/32",
+      "author": "hapymelz",
+      "closingIssue": {
+        "number": 17,
+        "title": "Numbers R-Quadrate",
+        "repoOwner": "otocolobusmanul3816"
+      }
+    }
+  ],
+  "accession": {
+    "otherSubjectDescription": [
+      "Please describe the subject of the data.",
+      ""
+    ],
+    "subjectType": [
+      "What is the subject type?",
+      "Biological specimen"
+    ],
+    "specimenSource": [
+      "Is your data from a commercially acquired organism or from an accessioned specimen (i.e., from a natural history collection)?",
+      "Non-accessioned"
+    ],
+    "iDigBioAccessioned": [
+      "Is your specimen's species in the iDigBio database?",
+      "No"
+    ],
+    "iDigBioURL": [
+      "Enter URL from iDigBio:",
+      ""
+    ],
+    "species": [
+      "What is your specimen's species?",
+      "Nerodia rhombifer"
+    ],
+    "biologicalSex": [
+      "What is your specimen's sex?",
+      "Male"
+    ],
+    "developmentalStage": [
+      "What is your specimen's developmental stage?",
+      "Adult"
+    ],
+    "modality": [
+      "What is the modality of the acquisition?",
+      "Micro CT (or synchrotron)"
+    ],
+    "contrastEnhancement": [
+      "Is there contrast enhancement treatment applied to the specimen?",
+      "No"
+    ],
+    "imageContents": [
+      "What is in the image?",
+      "Partial specimen"
+    ],
+    "anatomicalAreas": [
+      "What anatomical area(s) is/are present in the scan?",
+      [
+        "Head and neck (e.g., cranium, mandible, proximal vertebral colum)"
+      ]
+    ],
+    "redistributionAcknowledgement": [
+      "Acknowledgement:",
+      [
+        "I have the right to allow redistribution of this data."
+      ]
+    ],
+    "license": [
+      "Choose a license:",
+      "CC BY-NC 4.0 (requires attribution, non-commercial usage only)"
+    ],
+    "githubRepoName": [
+      "What should the repository in your github account called? This needs to be unique value for your account.",
+      "Nerodia_Segmentation_Laboratory"
+    ],
+    "repoType": [
+      "What is the intended lifespan of this repository?",
+      "Archival (intended for long-term maintenance)"
+    ],
+    "scanDimensions": "(762, 1305, 2097)",
+    "scanSpacing": "(0.02469999999999999, 0.024699999999999972, 0.024699999999999982)",
+    "fileFormatVersion": 2
+  },
+  "screenshotCount": 2,
+  "screenshotCaptions": {
+    "screenshot-1.png": "Dorsal view of N.rhombifer",
+    "screenshot-2.png": "Lateral view of N.rhombifer\n"
+  }
+}

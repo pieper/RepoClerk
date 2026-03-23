@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/pieper/RepoClerk/main/schemas/journal.schema.json",
+  "schemaVersion": 1,
+  "nameWithOwner": "dinonoto/NotoLab_ChickenFoot_2025",
+  "journalUpdatedAt": "2026-03-23T16:54:01Z",
+  "pushedAt": "2025-12-21T19:44:19Z",
+  "openIssues": [],
+  "openPRs": [],
+  "accession": {
+    "otherSubjectDescription": [
+      "Please describe the subject of the data.",
+      ""
+    ],
+    "subjectType": [
+      "What is the subject type?",
+      "Biological specimen"
+    ],
+    "specimenSource": [
+      "Is your data from a commercially acquired organism or from an accessioned specimen (i.e., from a natural history collection)?",
+      "Non-accessioned"
+    ],
+    "iDigBioAccessioned": [
+      "Is your specimen's species in the iDigBio database?",
+      ""
+    ],
+    "iDigBioURL": [
+      "Enter URL from iDigBio:",
+      ""
+    ],
+    "species": [
+      "What is your specimen's species?",
+      "Gallus gallus"
+    ],
+    "biologicalSex": [
+      "What is your specimen's sex?",
+      "Unknown"
+    ],
+    "developmentalStage": [
+      "What is your specimen's developmental stage?",
+      "Juvenile (neonatal to subadult)"
+    ],
+    "modality": [
+      "What is the modality of the acquisition?",
+      "Micro CT (or synchrotron)"
+    ],
+    "contrastEnhancement": [
+      "Is there contrast enhancement treatment applied to the specimen?",
+      "No"
+    ],
+    "imageContents": [
+      "What is in the image?",
+      "Partial specimen"
+    ],
+    "anatomicalAreas": [
+      "What anatomical area(s) is/are present in the scan?",
+      [
+        "Hind limg"
+      ]
+    ],
+    "redistributionAcknowledgement": [
+      "Acknowledgement:",
+      [
+        "I have the right to allow redistribution of this data."
+      ]
+    ],
+    "license": [
+      "Choose a license:",
+      "CC BY-NC 4.0 (requires attribution, non-commercial usage only)"
+    ],
+    "githubRepoName": [
+      "What should the repository in your github account called? This needs to be unique value for your account.",
+      "NotoLab_ChickenFoot_2025"
+    ],
+    "repoType": [
+      "What is the intended lifespan of this repository?",
+      "Archival (intended for long-term maintenance)"
+    ],
+    "scanDimensions": "(588, 651, 768)",
+    "scanSpacing": "(0.084, 0.084, 0.168)",
+    "fileFormatVersion": 2
+  },
+  "screenshotCount": 1,
+  "screenshotCaptions": {
+    "screenshot-1.png": "Chicken foot specimen scan with segmentation of skeletal system."
+  }
+}
