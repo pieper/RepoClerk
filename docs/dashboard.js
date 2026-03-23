@@ -135,13 +135,8 @@
     // Collect all screenshots across all repos, shuffled
     const slides = [];
     for (const repo of repos) {
-      const captions = Array.isArray(repo.screenshotCaptions) ? repo.screenshotCaptions : [];
-      for (const item of captions) {
-        const filename = item.filename
-          || Object.keys(item).find(k => k !== 'caption' && k !== 'description')
-          || '';
-        if (!filename) continue;
-        const caption = item.caption || item.description || item[filename] || '';
+      const captions = normaliseCaptions(repo.screenshotCaptions);
+      for (const { filename, caption } of captions) {
         slides.push({
           url: `https://raw.githubusercontent.com/${repo.nameWithOwner}/main/screenshots/${encodeURIComponent(filename)}`,
           caption,
@@ -215,6 +210,27 @@
 
   // --- Helpers ---
 
+  // Normalise screenshotCaptions to [{filename, caption}] regardless of source format:
+  //   array:  [{filename, caption}, ...]  or  [{filename: caption}, ...]
+  //   object: {"filename": "caption", ...}
+  function normaliseCaptions(raw) {
+    if (!raw) return [];
+    if (Array.isArray(raw)) {
+      return raw.map(item => {
+        if (item.filename) return { filename: item.filename, caption: item.caption || item.description || '' };
+        const key = Object.keys(item).find(k => k !== 'caption' && k !== 'description') || '';
+        return { filename: key, caption: item.caption || item.description || item[key] || '' };
+      }).filter(c => c.filename);
+    }
+    if (typeof raw === 'object') {
+      return Object.entries(raw).map(([filename, caption]) => ({
+        filename,
+        caption: typeof caption === 'string' ? caption : '',
+      }));
+    }
+    return [];
+  }
+
   function buildDetailHTML(repo) {
     const acc = repo.accession || {};
     const accKeys = Object.keys(acc).filter(k => acc[k] !== null && acc[k] !== undefined);
@@ -228,22 +244,16 @@
         '</dl>'
       : '<p style="color:#586069;font-size:0.85rem">No accession data.</p>';
 
-    const captions = repo.screenshotCaptions || [];
+    const captions = normaliseCaptions(repo.screenshotCaptions);
     const screenshotsHTML = captions.length
       ? '<div class="screenshots">' +
-        captions.map(item => {
-          // Support {filename, caption} objects or {filename: caption} objects
-          const filename = item.filename
-            || Object.keys(item).find(k => k !== 'caption' && k !== 'description')
-            || '';
-          if (!filename) return '';
-          const caption = item.caption || item.description || item[filename] || '';
+        captions.map(({ filename, caption }) => {
           const url = `https://raw.githubusercontent.com/${repo.nameWithOwner}/main/screenshots/${encodeURIComponent(filename)}`;
           return `<figure>
             <a href="${url}" target="_blank">
-              <img src="${url}" alt="${escapeHTML(String(caption))}" loading="lazy">
+              <img src="${url}" alt="${escapeHTML(caption)}" loading="lazy">
             </a>
-            ${caption ? `<figcaption>${escapeHTML(String(caption))}</figcaption>` : ''}
+            ${caption ? `<figcaption>${escapeHTML(caption)}</figcaption>` : ''}
           </figure>`;
         }).join('') +
         '</div>'
