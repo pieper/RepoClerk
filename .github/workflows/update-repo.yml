@@ -6,6 +6,9 @@ on:
   issues:
     types: [opened]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 concurrency:
   group: journal-${{ github.event.client_payload.owner || github.event.issue.title }}-${{ github.event.client_payload.repo || '' }}
   cancel-in-progress: false
