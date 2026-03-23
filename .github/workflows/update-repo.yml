@@ -59,9 +59,15 @@ jobs:
       - name: Commit and push dashboard
         run: |
           git add docs/
-          if git diff --cached --quiet; then
-            echo "No dashboard changes"
-          else
-            git commit -m "Regenerate dashboard"
-            git push || (git pull --rebase && git push)
-          fi
+          git diff --cached --quiet && { echo "No dashboard changes"; exit 0; }
+          git commit -m "Regenerate dashboard"
+          if git push; then exit 0; fi
+          # Push rejected — remote has new commits (likely another drain loop run).
+          # Undo our commit, pull the latest journals, regenerate fresh, then push.
+          git reset HEAD~1
+          git pull --rebase
+          python3 scripts/generate-dashboard.py
+          git add docs/
+          git diff --cached --quiet && { echo "No dashboard changes after pull"; exit 0; }
+          git commit -m "Regenerate dashboard"
+          git push
