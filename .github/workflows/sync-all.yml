@@ -40,20 +40,14 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/sync-all.py
 
-      - name: Generate dashboard
-        run: python3 scripts/generate-dashboard.py
-
-      - name: Commit and push dashboard
+      - name: Generate and push dashboard
         run: |
-          git add docs/
-          git diff --cached --quiet && { echo "No dashboard changes"; exit 0; }
-          git commit -m "Sync: regenerate dashboard"
-          if git push; then exit 0; fi
-          # Push rejected — undo commit, pull latest, regenerate fresh, push again.
-          git reset --hard HEAD~1
-          git pull --rebase
-          python3 scripts/generate-dashboard.py
-          git add docs/
-          git diff --cached --quiet && { echo "No dashboard changes after pull"; exit 0; }
-          git commit -m "Sync: regenerate dashboard"
-          git push
+          push_dashboard() {
+            git pull --rebase
+            python3 scripts/generate-dashboard.py
+            git add docs/
+            git diff --cached --quiet && { echo "No dashboard changes"; return 0; }
+            git commit -m "Sync: regenerate dashboard"
+            git push
+          }
+          push_dashboard || push_dashboard
