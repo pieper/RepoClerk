@@ -1,0 +1,242 @@
+name: Sync All MorphoDepot Journals
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # every 6 hours
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout RepoClerk
+        uses: actions/checkout@v4
+
+      - name: Discover all MorphoDepot fork repos
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Search for all repos with topic:morphodepot that are forks.
+          # GitHub Search API returns up to 1000 results; paginate if needed.
+          gh api graphql -f query='
+            query($cursor: String) {
+              search(
+                query: "topic:morphodepot fork:true"
+                type: REPOSITORY
+                first: 100
+                after: $cursor
+              ) {
+                pageInfo { hasNextPage endCursor }
+                nodes {
+                  ... on Repository {
+                    nameWithOwner
+                    pushedAt
+                    isFork
+                  }
+                }
+              }
+            }
+          ' --paginate --jq '.data.search.nodes[]
+            | select(.isFork == true)
+            | {nameWithOwner, pushedAt}' \
+            > /tmp/all_repos.jsonl
+
+          echo "Found $(wc -l < /tmp/all_repos.jsonl) MorphoDepot fork repos"
+
+      - name: Sync journals
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'PYEOF'
+          import json
+          import os
+          import subprocess
+          import sys
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          def run(cmd, **kwargs):
+              return subprocess.run(cmd, check=True, text=True, capture_output=True, **kwargs)
+
+          def gh_graphql(query, variables):
+              args = ["gh", "api", "graphql", "-f", f"query={query}"]
+              for k, v in variables.items():
+                  args += ["-f", f"{k}={v}"]
+              result = run(args)
+              return json.loads(result.stdout)
+
+          def fetch_url(url):
+              result = subprocess.run(
+                  ["curl", "-sf", url],
+                  capture_output=True, text=True
+              )
+              if result.returncode == 0:
+                  return result.stdout
+              return None
+
+          now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+          repos = []
+          with open("/tmp/all_repos.jsonl") as f:
+              for line in f:
+                  line = line.strip()
+                  if line:
+                      repos.append(json.loads(line))
+
+          updated_files = []
+          errors = []
+
+          GRAPHQL_QUERY = """
+            query($owner: String!, $repo: String!) {
+              repository(owner: $owner, name: $repo) {
+                pushedAt
+                issues(states: OPEN, first: 100) {
+                  nodes {
+                    number title url
+                    author { login }
+                    assignees(first: 20) { nodes { login } }
+                  }
+                }
+                pullRequests(states: OPEN, first: 100) {
+                  nodes {
+                    number title isDraft url
+                    author { login }
+                    closingIssuesReferences(first: 5) {
+                      nodes {
+                        number title
+                        repository { owner { login } }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          """
+
+          for entry in repos:
+              nwo = entry["nameWithOwner"]
+              remote_pushed_at = entry["pushedAt"]
+              owner, repo = nwo.split("/", 1)
+              journal_path = Path(f"journals/{owner}^{repo}.json")
+
+              # Determine if update is needed
+              needs_update = True
+              if journal_path.exists():
+                  try:
+                      with open(journal_path) as f:
+                          existing = json.load(f)
+                      if existing.get("pushedAt") == remote_pushed_at:
+                          needs_update = False
+                          print(f"  SKIP {nwo} (up to date)")
+                  except Exception:
+                      pass
+
+              if not needs_update:
+                  continue
+
+              print(f"  UPDATE {nwo}")
+              try:
+                  data = gh_graphql(GRAPHQL_QUERY, {"owner": owner, "repo": repo})
+                  repo_data = data["data"]["repository"]
+
+                  base_url = f"https://raw.githubusercontent.com/{owner}/{repo}/main"
+                  accession_raw = fetch_url(f"{base_url}/MorphoDepotAccession.json")
+                  accession = json.loads(accession_raw) if accession_raw else {}
+
+                  captions_raw = fetch_url(f"{base_url}/screenshots/captions.json")
+                  captions = json.loads(captions_raw) if captions_raw else []
+
+                  # Count screenshots
+                  try:
+                      sc_result = run(["gh", "api", f"repos/{owner}/{repo}/contents/screenshots",
+                                        "--jq", '[.[] | select(.name | test("\\\\.(png|jpg|jpeg|gif|webp)$"; "i"))] | length'])
+                      screenshot_count = int(sc_result.stdout.strip() or "0")
+                  except Exception:
+                      screenshot_count = 0
+
+                  open_issues = [
+                      {
+                          "number": issue["number"],
+                          "title": issue["title"],
+                          "url": issue["url"],
+                          "author": issue["author"]["login"] if issue["author"] else None,
+                          "assignees": [a["login"] for a in issue["assignees"]["nodes"]],
+                      }
+                      for issue in repo_data["issues"]["nodes"]
+                  ]
+
+                  open_prs = []
+                  for pr in repo_data["pullRequests"]["nodes"]:
+                      closing_nodes = pr["closingIssuesReferences"]["nodes"]
+                      closing_issue = None
+                      if closing_nodes:
+                          ci = closing_nodes[0]
+                          closing_issue = {
+                              "number": ci["number"],
+                              "title": ci["title"],
+                              "repoOwner": ci["repository"]["owner"]["login"],
+                          }
+                      open_prs.append({
+                          "number": pr["number"],
+                          "title": pr["title"],
+                          "isDraft": pr["isDraft"],
+                          "url": pr["url"],
+                          "author": pr["author"]["login"] if pr["author"] else None,
+                          "closingIssue": closing_issue,
+                      })
+
+                  journal = {
+                      "$schema": "https://raw.githubusercontent.com/${{ github.repository }}/main/schemas/journal.schema.json",
+                      "schemaVersion": 1,
+                      "nameWithOwner": nwo,
+                      "journalUpdatedAt": now,
+                      "pushedAt": repo_data["pushedAt"],
+                      "openIssues": open_issues,
+                      "openPRs": open_prs,
+                      "accession": accession,
+                      "screenshotCount": screenshot_count,
+                      "screenshotCaptions": captions,
+                  }
+
+                  journal_path.parent.mkdir(exist_ok=True)
+                  with open(journal_path, "w") as f:
+                      json.dump(journal, f, indent=2)
+                      f.write("\n")
+
+                  updated_files.append(str(journal_path))
+
+              except Exception as e:
+                  print(f"  ERROR updating {nwo}: {e}", file=sys.stderr)
+                  errors.append(nwo)
+
+          print(f"\nUpdated {len(updated_files)} journal(s), {len(errors)} error(s)")
+          if updated_files:
+              with open("/tmp/updated_files.txt", "w") as f:
+                  f.write("\n".join(updated_files))
+          else:
+              open("/tmp/updated_files.txt", "w").close()
+
+          if errors:
+              sys.exit(1)
+          PYEOF
+
+      - name: Commit and push updated journals
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if [ ! -s /tmp/updated_files.txt ]; then
+            echo "No journals were updated — nothing to commit"
+            exit 0
+          fi
+
+          while IFS= read -r file; do
+            git add "$file"
+          done < /tmp/updated_files.txt
+
+          COUNT=$(wc -l < /tmp/updated_files.txt | tr -d ' ')
+          git commit -m "Sync journals: update ${COUNT} repo(s)"
+          git push
