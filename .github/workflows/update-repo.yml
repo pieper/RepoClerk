@@ -10,200 +10,60 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 concurrency:
-  group: journal-${{ github.event.client_payload.owner || github.event.issue.title }}-${{ github.event.client_payload.repo || '' }}
+  group: update-repo-drain
   cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Only run for dispatches or issues with the update-request label
+    if: |
+      github.event_name == 'repository_dispatch' ||
+      (github.event_name == 'issues' &&
+       contains(github.event.issue.labels.*.name, 'update-request'))
     permissions:
       contents: write
+      issues: write
 
     steps:
-      - name: Resolve owner and repo
-        id: resolve
-        run: |
-          if [[ "${{ github.event_name }}" == "issues" ]]; then
-            TITLE="${{ github.event.issue.title }}"
-            OWNER="${TITLE%%/*}"
-            REPO="${TITLE#*/}"
-          else
-            OWNER="${{ github.event.client_payload.owner }}"
-            REPO="${{ github.event.client_payload.repo }}"
-          fi
-          echo "owner=$OWNER" >> "$GITHUB_OUTPUT"
-          echo "repo=$REPO" >> "$GITHUB_OUTPUT"
-
       - name: Checkout RepoClerk
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Fetch repo metadata via GitHub API
-        id: meta
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OWNER: ${{ steps.resolve.outputs.owner }}
-          REPO: ${{ steps.resolve.outputs.repo }}
-        run: |
-          gh api graphql -f query='
-            query($owner: String!, $repo: String!) {
-              repository(owner: $owner, name: $repo) {
-                pushedAt
-                issues(states: OPEN, first: 100) {
-                  nodes {
-                    number
-                    title
-                    url
-                    author { login }
-                    assignees(first: 20) { nodes { login } }
-                  }
-                }
-                pullRequests(states: OPEN, first: 100) {
-                  nodes {
-                    number
-                    title
-                    isDraft
-                    url
-                    author { login }
-                    closingIssuesReferences(first: 5) {
-                      nodes {
-                        number
-                        title
-                        repository { owner { login } }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          ' -f owner="$OWNER" -f repo="$REPO" > /tmp/graphql_result.json
-
-      - name: Fetch accession and screenshot data
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OWNER: ${{ steps.resolve.outputs.owner }}
-          REPO: ${{ steps.resolve.outputs.repo }}
-        run: |
-          BASE_URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/main"
-
-          if curl -sf "${BASE_URL}/MorphoDepotAccession.json" -o /tmp/accession.json; then
-            echo "accession_found=true" >> "$GITHUB_ENV"
-          else
-            echo '{}' > /tmp/accession.json
-            echo "accession_found=false" >> "$GITHUB_ENV"
-          fi
-
-          if curl -sf "${BASE_URL}/screenshots/captions.json" -o /tmp/captions.json; then
-            echo "captions_found=true" >> "$GITHUB_ENV"
-          else
-            echo '[]' > /tmp/captions.json
-            echo "captions_found=false" >> "$GITHUB_ENV"
-          fi
-
-          # Count screenshots (look for image files via API)
-          SCREENSHOT_COUNT=$(gh api "repos/${OWNER}/${REPO}/contents/screenshots" \
-            --jq '[.[] | select(.name | test("\\.(png|jpg|jpeg|gif|webp)$"; "i"))] | length' \
-            2>/dev/null || echo "0")
-          echo "$SCREENSHOT_COUNT" > /tmp/screenshot_count.txt
-
-      - name: Build journal JSON
-        env:
-          OWNER: ${{ steps.resolve.outputs.owner }}
-          REPO: ${{ steps.resolve.outputs.repo }}
-        run: |
-          python3 - <<'PYEOF'
-          import json
-          import os
-          from datetime import datetime, timezone
-
-          owner = os.environ["OWNER"]
-          repo = os.environ["REPO"]
-
-          with open("/tmp/graphql_result.json") as f:
-              data = json.load(f)["data"]["repository"]
-
-          with open("/tmp/accession.json") as f:
-              accession = json.load(f)
-
-          with open("/tmp/captions.json") as f:
-              captions = json.load(f)
-
-          with open("/tmp/screenshot_count.txt") as f:
-              screenshot_count = int(f.read().strip() or "0")
-
-          open_issues = [
-              {
-                  "number": issue["number"],
-                  "title": issue["title"],
-                  "url": issue["url"],
-                  "author": issue["author"]["login"] if issue["author"] else None,
-                  "assignees": [a["login"] for a in issue["assignees"]["nodes"]],
-              }
-              for issue in data["issues"]["nodes"]
-          ]
-
-          open_prs = []
-          for pr in data["pullRequests"]["nodes"]:
-              closing_nodes = pr["closingIssuesReferences"]["nodes"]
-              closing_issue = None
-              if closing_nodes:
-                  ci = closing_nodes[0]
-                  closing_issue = {
-                      "number": ci["number"],
-                      "title": ci["title"],
-                      "repoOwner": ci["repository"]["owner"]["login"],
-                  }
-              open_prs.append(
-                  {
-                      "number": pr["number"],
-                      "title": pr["title"],
-                      "isDraft": pr["isDraft"],
-                      "url": pr["url"],
-                      "author": pr["author"]["login"] if pr["author"] else None,
-                      "closingIssue": closing_issue,
-                  }
-              )
-
-          journal = {
-              "$schema": "https://raw.githubusercontent.com/${{ github.repository }}/main/schemas/journal.schema.json",
-              "schemaVersion": 1,
-              "nameWithOwner": f"{owner}/{repo}",
-              "journalUpdatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-              "pushedAt": data["pushedAt"],
-              "openIssues": open_issues,
-              "openPRs": open_prs,
-              "accession": accession,
-              "screenshotCount": screenshot_count,
-              "screenshotCaptions": captions,
-          }
-
-          out_path = f"journals/{owner}^{repo}.json"
-          os.makedirs("journals", exist_ok=True)
-          with open(out_path, "w") as f:
-              json.dump(journal, f, indent=2)
-              f.write("\n")
-
-          print(f"Wrote {out_path}")
-          PYEOF
-
-      - name: Commit and push journal
-        env:
-          OWNER: ${{ steps.resolve.outputs.owner }}
-          REPO: ${{ steps.resolve.outputs.repo }}
+      - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "journals/${OWNER}^${REPO}.json"
-          if git diff --cached --quiet; then
-            echo "No changes to journal — skipping commit"
-          else
-            git commit -m "Update journal for ${OWNER}/${REPO}"
-            git push
-          fi
 
-      - name: Close trigger issue (if opened via issue)
-        if: github.event_name == 'issues'
+      - name: Ensure update-request label exists
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh issue close ${{ github.event.issue.number }} \
-            --comment "Journal updated for ${{ github.event.issue.title }}."
+          gh label create update-request \
+            --repo "$GITHUB_REPOSITORY" \
+            --color "0075ca" \
+            --description "Queued journal update" 2>/dev/null || true
+
+      - name: Run drain loop
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_NAME: ${{ github.event_name }}
+          INITIAL_OWNER: ${{ github.event.client_payload.owner }}
+          INITIAL_REPO: ${{ github.event.client_payload.repo }}
+        run: python3 scripts/drain.py
+
+      - name: Generate dashboard
+        run: python3 scripts/generate-dashboard.py
+
+      - name: Commit and push dashboard
+        run: |
+          git add docs/
+          if git diff --cached --quiet; then
+            echo "No dashboard changes"
+          else
+            git pull --rebase
+            git commit -m "Regenerate dashboard"
+            git push
+          fi

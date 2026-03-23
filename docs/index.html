@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MorphoDepot Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f7fa;
+      color: #24292e;
+    }
+
+    header {
+      background: #1a3a52;
+      color: #fff;
+      padding: 1.25rem 2rem;
+    }
+    header h1 { font-size: 1.5rem; font-weight: 600; }
+    header p  { font-size: 0.85rem; opacity: 0.7; margin-top: 0.25rem; }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 1.5rem 2rem; }
+
+    /* Summary bar */
+    #summary {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .stat {
+      flex: 1;
+      background: #fff;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+    }
+    .stat .value {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a3a52;
+    }
+    .stat .label {
+      font-size: 0.8rem;
+      color: #586069;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Charts */
+    #charts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .chart-card {
+      background: #fff;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1rem;
+    }
+    .chart-card label {
+      font-size: 0.85rem;
+      color: #586069;
+      margin-right: 0.5rem;
+    }
+    .chart-card select {
+      font-size: 0.85rem;
+      padding: 0.2rem 0.4rem;
+      border: 1px solid #e1e4e8;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Repo table */
+    #repo-section {
+      background: #fff;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    #repo-section h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #e1e4e8;
+      background: #f6f8fa;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    thead th {
+      background: #f6f8fa;
+      text-align: left;
+      padding: 0.6rem 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid #e1e4e8;
+      color: #586069;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .repo-row {
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+    .repo-row:hover { background: #f6f8fa; }
+    .repo-row td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: middle;
+    }
+    .repo-row td:first-child { font-weight: 500; }
+    .repo-row a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+    .repo-row a:hover { text-decoration: underline; }
+
+    /* Detail / drilldown row */
+    .detail-row td {
+      padding: 1rem 1.25rem;
+      background: #f9fbff;
+      border-bottom: 1px solid #e1e4e8;
+    }
+
+    dl.accession {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 0.25rem 1rem;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+    dl.accession dt {
+      font-weight: 600;
+      color: #586069;
+      text-transform: capitalize;
+    }
+    dl.accession dd { color: #24292e; }
+
+    .screenshots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .screenshots figure {
+      width: 160px;
+      text-align: center;
+    }
+    .screenshots img {
+      width: 160px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid #e1e4e8;
+      display: block;
+    }
+    .screenshots figcaption {
+      font-size: 0.75rem;
+      color: #586069;
+      margin-top: 0.25rem;
+    }
+
+    .expand-indicator {
+      float: right;
+      color: #586069;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 700px) {
+      #charts { grid-template-columns: 1fr; }
+      #summary { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MorphoDepot Dashboard</h1>
+  <p>Generated: <span id="generated-at">loading…</span></p>
+</header>
+
+<main>
+
+  <section id="summary">
+    <div class="stat">
+      <span class="value" id="total-repos">—</span>
+      <span class="label">Repositories</span>
+    </div>
+    <div class="stat">
+      <span class="value" id="total-issues">—</span>
+      <span class="label">Open Issues</span>
+    </div>
+    <div class="stat">
+      <span class="value" id="total-prs">—</span>
+      <span class="label">Open PRs</span>
+    </div>
+  </section>
+
+  <section id="charts">
+    <div class="chart-card">
+      <div id="activity-chart" style="height:280px"></div>
+    </div>
+    <div class="chart-card">
+      <label for="tax-level">Taxonomic level:</label>
+      <select id="tax-level">
+        <option value="kingdom">Kingdom</option>
+        <option value="phylum">Phylum</option>
+        <option value="class">Class</option>
+        <option value="order">Order</option>
+        <option value="family">Family</option>
+        <option value="genus">Genus</option>
+      </select>
+      <div id="taxonomy-chart" style="height:240px"></div>
+    </div>
+  </section>
+
+  <section id="repo-section">
+    <h2>Repositories</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Repository</th>
+          <th>Last Push</th>
+          <th>Open Issues</th>
+          <th>Open PRs</th>
+          <th>Screenshots</th>
+        </tr>
+      </thead>
+      <tbody id="repo-tbody"></tbody>
+    </table>
+  </section>
+
+</main>
+
+<script src="dashboard.js"></script>
+</body>
+</html>
