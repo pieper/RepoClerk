@@ -19,6 +19,9 @@
   document.getElementById('generated-at').textContent =
     new Date(data.generatedAt).toLocaleString();
 
+  // --- Carousel ---
+  buildCarousel(data.repos);
+
   // --- Activity chart ---
   const activityChart = echarts.init(document.getElementById('activity-chart'));
   activityChart.setOption({
@@ -125,6 +128,90 @@
     taxonomyChart.resize();
   });
 
+
+  // --- Carousel ---
+
+  function buildCarousel(repos) {
+    // Collect all screenshots across all repos, shuffled
+    const slides = [];
+    for (const repo of repos) {
+      const captions = repo.screenshotCaptions || [];
+      for (const item of captions) {
+        const filename = item.filename
+          || Object.keys(item).find(k => k !== 'caption' && k !== 'description')
+          || '';
+        if (!filename) continue;
+        const caption = item.caption || item.description || item[filename] || '';
+        slides.push({
+          url: `https://raw.githubusercontent.com/${repo.nameWithOwner}/main/screenshots/${encodeURIComponent(filename)}`,
+          caption,
+          nameWithOwner: repo.nameWithOwner,
+        });
+      }
+    }
+
+    if (slides.length === 0) return;
+
+    // Fisher-Yates shuffle for variety on each page load
+    for (let i = slides.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [slides[i], slides[j]] = [slides[j], slides[i]];
+    }
+
+    const gallery  = document.getElementById('gallery');
+    const dotsEl   = document.getElementById('carousel-dots');
+    const prevBtn  = document.getElementById('carousel-prev');
+    const nextBtn  = document.getElementById('carousel-next');
+
+    // Build slide elements
+    slides.forEach((slide, i) => {
+      const div = document.createElement('div');
+      div.className = 'carousel-slide' + (i === 0 ? ' active' : '');
+      div.innerHTML = `
+        <img src="${escapeHTML(slide.url)}" alt="${escapeHTML(slide.caption)}" loading="lazy">
+        <div class="carousel-caption">
+          ${slide.caption ? escapeHTML(slide.caption) + '<br>' : ''}
+          <a class="repo-link" href="https://github.com/${escapeHTML(slide.nameWithOwner)}"
+             target="_blank">${escapeHTML(slide.nameWithOwner)}</a>
+        </div>`;
+      gallery.insertBefore(div, prevBtn);
+
+      const dot = document.createElement('div');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    });
+
+    gallery.classList.remove('hidden');
+
+    const slideEls = gallery.querySelectorAll('.carousel-slide');
+    const dotEls   = dotsEl.querySelectorAll('.carousel-dot');
+    let current = 0;
+    let timer;
+
+    function goTo(index) {
+      slideEls[current].classList.remove('active');
+      dotEls[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slideEls[current].classList.add('active');
+      dotEls[current].classList.add('active');
+      resetTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), 5000);
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    // Pause on hover
+    gallery.addEventListener('mouseenter', () => clearInterval(timer));
+    gallery.addEventListener('mouseleave', resetTimer);
+
+    resetTimer();
+  }
 
   // --- Helpers ---
 
