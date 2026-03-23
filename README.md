@@ -1,6 +1,18 @@
 # RepoClerk
 
-RepoClerk is a caching and coordination layer for the [MorphoDepot](https://github.com/MorphoDepot) Slicer extension.
+RepoClerk is a caching and coordination layer for the [MorphoDepot](https://github.com/MorphoDepot) Slicer extension. A public dashboard showing the overall health and activity of the MorphoDepot ecosystem is available at **[pieper.github.io/RepoClerk](https://pieper.github.io/RepoClerk/)**.
+
+## Dashboard
+
+The [MorphoDepot Dashboard](https://pieper.github.io/RepoClerk/) is a static web page served via GitHub Pages, automatically regenerated after every journal update. It provides a public view of the MorphoDepot ecosystem without requiring a GitHub account or the Slicer extension:
+
+- **Screenshot gallery** — rotating carousel of specimen images drawn from all repositories
+- **Summary bar** — total repository, open issue, and open PR counts at a glance
+- **Activity chart** — count of repositories with pushes in the last day, week, month, and year
+- **Taxonomy chart** — distribution of specimens by taxonomic level (kingdom through genus), with a dropdown to switch levels
+- **Repository table** — one row per repo showing last push date, open issues, open PRs, and screenshot count; clicking a row expands a detail panel with full accession metadata and screenshot thumbnails
+
+The dashboard data is stored in `docs/dashboard-data.json` and loaded client-side, so the HTML shell is fully static. Charts are rendered using [Apache ECharts](https://echarts.apache.org/).
 
 ## What It Does
 
@@ -15,10 +27,18 @@ RepoClerk/
   README.md
   journals/
     {owner}^{repo}.json       # one file per MorphoDepot repository
+  docs/
+    index.html                # dashboard page (served via GitHub Pages)
+    dashboard.js              # ECharts setup and repo table logic
+    dashboard-data.json       # aggregated data, regenerated on every journal update
+  scripts/
+    drain.py                  # drain-loop logic used by update-repo.yml
+    sync-all.py               # discovery and queuing logic used by sync-all.yml
+    generate-dashboard.py     # reads journals/, writes docs/dashboard-data.json
   .github/
     workflows/
-      update-repo.yml         # triggered on demand to update one repo's journal
-      sync-all.yml            # cron job to check all repos and rebuild any missing/stale journals
+      update-repo.yml         # drain loop: processes update-request issues, then regenerates dashboard
+      sync-all.yml            # cron: queues stale/missing repos, deletes removed ones, regenerates dashboard
 ```
 
 The `^` separator in filenames is used (rather than `/`) because `/` is not valid in filenames. The `owner` and `repo` fields correspond to a GitHub repository at `github.com/{owner}/{repo}`.
