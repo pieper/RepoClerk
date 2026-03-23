@@ -37,14 +37,11 @@ jobs:
                   ... on Repository {
                     nameWithOwner
                     pushedAt
-                    isFork
                   }
                 }
               }
             }
-          ' --paginate --jq '.data.search.nodes[]
-            | select(.isFork == true)
-            | {nameWithOwner, pushedAt}' \
+          ' --paginate --jq '.data.search.nodes[] | {nameWithOwner, pushedAt}' \
             > /tmp/all_repos.jsonl
 
           echo "Found $(wc -l < /tmp/all_repos.jsonl) MorphoDepot fork repos"
