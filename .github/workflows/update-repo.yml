@@ -7,7 +7,7 @@ on:
     types: [opened]
 
 concurrency:
-  group: update-repo-drain
+  group: repoclerk-writer
   cancel-in-progress: false
 
 jobs:
