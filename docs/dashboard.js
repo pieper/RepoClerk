@@ -135,7 +135,7 @@
     // Collect all screenshots across all repos, shuffled
     const slides = [];
     for (const repo of repos) {
-      const captions = repo.screenshotCaptions || [];
+      const captions = Array.isArray(repo.screenshotCaptions) ? repo.screenshotCaptions : [];
       for (const item of captions) {
         const filename = item.filename
           || Object.keys(item).find(k => k !== 'caption' && k !== 'description')
