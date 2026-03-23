@@ -76,6 +76,7 @@ jobs:
 
       - name: Fetch accession and screenshot data
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OWNER: ${{ steps.resolve.outputs.owner }}
           REPO: ${{ steps.resolve.outputs.repo }}
         run: |
@@ -100,10 +101,6 @@ jobs:
             --jq '[.[] | select(.name | test("\\.(png|jpg|jpeg|gif|webp)$"; "i"))] | length' \
             2>/dev/null || echo "0")
           echo "$SCREENSHOT_COUNT" > /tmp/screenshot_count.txt
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OWNER: ${{ steps.resolve.outputs.owner }}
-          REPO: ${{ steps.resolve.outputs.repo }}
 
       - name: Build journal JSON
         env:
