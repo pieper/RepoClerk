@@ -83,7 +83,8 @@ Each file at `journals/{owner}^{repo}.json` has this structure:
   "screenshotCount": 3,
   "screenshotCaptions": [
     { "comment": "Contents of screenshots/captions.json from the repo's main branch" }
-  ]
+  ],
+  "volumeSize": 1234567890
 }
 ```
 
@@ -95,6 +96,7 @@ Each file at `journals/{owner}^{repo}.json` has this structure:
 - **`openPRs.closingIssue.repoOwner`**: the owner login of the repo the closing issue belongs to — used by the Review tab to determine if the current user is the curator for that PR
 - **`accession`**: verbatim contents of `MorphoDepotAccession.json` from main branch — specimen metadata used by the Search tab
 - **`screenshotCaptions`**: verbatim contents of `screenshots/captions.json` if present; omitted (or `[]`) if not present
+- **`volumeSize`**: size in bytes of the source volume file (from HTTP `Content-Length`), or `null` if the `source_volume` file is absent or the URL could not be resolved/fetched
 
 ## How MorphoDepot Clients Use RepoClerk
 

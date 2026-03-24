@@ -60,6 +60,16 @@ def fetch_url(url):
     return r.stdout if r.returncode == 0 else None
 
 
+def resolve_volume_url(volume_ref, name_with_owner):
+    """Convert a source_volume reference to a full download URL.
+    Mirrors MorphoDepot.resolveVolumeURL: if it starts with 'http' use as-is,
+    otherwise treat as a relative path within the repo.
+    """
+    if volume_ref.startswith("http"):
+        return volume_ref
+    return f"https://github.com/{name_with_owner}/{volume_ref}"
+
+
 def process_repo(owner, repo):
     """Query GitHub and write journals/{owner}^{repo}.json. Returns the path written."""
     print(f"  Processing {owner}/{repo}...")
@@ -76,6 +86,19 @@ def process_repo(owner, repo):
 
     captions_raw = fetch_url(f"{base_url}/screenshots/captions.json")
     captions = json.loads(captions_raw) if captions_raw else []
+
+    volume_size = None
+    source_volume_raw = fetch_url(f"{base_url}/source_volume")
+    if source_volume_raw:
+        volume_url = resolve_volume_url(source_volume_raw.strip(), f"{owner}/{repo}")
+        r = subprocess.run(
+            ["curl", "-sI", "--max-redirs", "10", "-L", volume_url],
+            capture_output=True, text=True,
+        )
+        for line in r.stdout.splitlines():
+            if line.lower().startswith("content-length:"):
+                volume_size = int(line.split(":", 1)[1].strip())
+                break
 
     try:
         sc = run(["gh", "api", f"repos/{owner}/{repo}/contents/screenshots",
@@ -126,6 +149,7 @@ def process_repo(owner, repo):
         "accession": accession,
         "screenshotCount": screenshot_count,
         "screenshotCaptions": captions,
+        "volumeSize": volume_size,
     }
 
     out_path = Path(f"journals/{owner}^{repo}.json")
