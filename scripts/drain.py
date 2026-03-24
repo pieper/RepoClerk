@@ -97,8 +97,9 @@ def process_repo(owner, repo):
         )
         for line in r.stdout.splitlines():
             if line.lower().startswith("content-length:"):
+                # Keep overwriting — redirect responses also emit Content-Length: 0,
+                # so we want the last occurrence, which is from the final destination.
                 volume_size = int(line.split(":", 1)[1].strip())
-                break
 
     try:
         sc = run(["gh", "api", f"repos/{owner}/{repo}/contents/screenshots",
