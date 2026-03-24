@@ -44,6 +44,14 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/sync-all.py
 
+      - name: Run drain loop
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_NAME: sync-all
+          INITIAL_OWNER: ""
+          INITIAL_REPO: ""
+        run: python3 scripts/drain.py
+
       - name: Generate and push dashboard
         run: |
           push_dashboard() {
