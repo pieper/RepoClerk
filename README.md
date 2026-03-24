@@ -100,19 +100,45 @@ Each file at `journals/{owner}^{repo}.json` has this structure:
 
 ### Setup (once per user)
 
-Clone the RepoClerk repo into the user's local MorphoDepot directory:
+Clone the RepoClerk repo into the user's local MorphoDepot directory using a shallow clone to avoid downloading history:
 
 ```sh
-git clone https://github.com/{RepoClerkOrg}/RepoClerk
+git clone --depth 1 https://github.com/{RepoClerkOrg}/RepoClerk
 ```
 
 ### On Each Tab Refresh
 
 Instead of calling the GitHub GraphQL API, the client:
 
-1. Runs `git pull` on the local RepoClerk clone (fast, no API rate limits)
-2. Reads the relevant `journals/*.json` files from disk
-3. Filters client-side (e.g., issues assigned to `whoami()`, PRs authored by current user)
+1. Checks the size of the local RepoClerk clone and re-clones shallowly if it exceeds a threshold (see below)
+2. Runs `git pull` on the local RepoClerk clone (fast, no API rate limits)
+3. Reads the relevant `journals/*.json` files from disk
+4. Filters client-side (e.g., issues assigned to `whoami()`, PRs authored by current user)
+
+### Keeping the Clone Lean
+
+A shallow clone (`--depth 1`) starts with only one commit, but `git pull` accumulates new commits over time as the repo is updated. To prevent unbounded growth, MorphoDepot should check the clone size before pulling and re-clone if it exceeds a threshold:
+
+```python
+import shutil
+import subprocess
+from pathlib import Path
+
+REPOCLERK_SIZE_LIMIT_MB = 500
+
+def refreshRepoClerk(clonePath, repoUrl):
+    clone = Path(clonePath)
+    if clone.exists():
+        size_mb = sum(f.stat().st_size for f in clone.rglob('*') if f.is_file()) / 1e6
+        if size_mb > REPOCLERK_SIZE_LIMIT_MB:
+            shutil.rmtree(clone)  # history has grown too large — start fresh
+    if not clone.exists():
+        subprocess.run(['git', 'clone', '--depth', '1', repoUrl, str(clone)], check=True)
+    else:
+        subprocess.run(['git', 'pull'], cwd=clone, check=True)
+```
+
+In practice the clone is unlikely to exceed the threshold for years of normal use, but the check is cheap and makes the behaviour predictable at scale.
 
 ### Triggering a Journal Update After State Changes
 
