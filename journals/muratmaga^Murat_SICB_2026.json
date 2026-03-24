@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "muratmaga/Murat_SICB_2026",
-  "journalUpdatedAt": "2026-03-24T18:18:59Z",
+  "journalUpdatedAt": "2026-03-24T18:30:55Z",
   "pushedAt": "2026-01-08T21:33:21Z",
   "openIssues": [
     {
@@ -18,7 +18,7 @@
     {
       "number": 2,
       "title": "issue-1",
-      "isDraft": true,
+      "isDraft": false,
       "url": "https://github.com/muratmaga/Murat_SICB_2026/pull/2",
       "author": "pieper",
       "closingIssue": {
