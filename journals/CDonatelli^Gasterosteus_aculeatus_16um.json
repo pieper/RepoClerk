@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "CDonatelli/Gasterosteus_aculeatus_16um",
-  "journalUpdatedAt": "2026-03-24T14:02:02Z",
+  "journalUpdatedAt": "2026-03-24T14:30:11Z",
   "pushedAt": "2025-10-18T22:00:34Z",
   "openIssues": [
     {
@@ -101,5 +101,5 @@
   },
   "screenshotCount": 0,
   "screenshotCaptions": [],
-  "volumeSize": 0
+  "volumeSize": 705958812
 }

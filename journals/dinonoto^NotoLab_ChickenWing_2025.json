@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "dinonoto/NotoLab_ChickenWing_2025",
-  "journalUpdatedAt": "2026-03-24T14:00:27Z",
+  "journalUpdatedAt": "2026-03-24T14:29:53Z",
   "pushedAt": "2025-12-21T19:45:13Z",
   "openIssues": [],
   "openPRs": [],
@@ -82,5 +82,5 @@
   "screenshotCaptions": {
     "screenshot-1.png": "Chicken forelimb specimen with included segmentation of skeletatal elements."
   },
-  "volumeSize": 0
+  "volumeSize": 50991914
 }
