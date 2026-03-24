@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "otocolobusmanul3816/Nerodia_Segmentation_Laboratory",
-  "journalUpdatedAt": "2026-03-24T14:00:15Z",
+  "journalUpdatedAt": "2026-03-24T14:32:14Z",
   "pushedAt": "2026-03-18T19:53:18Z",
   "openIssues": [
     {
@@ -499,5 +499,5 @@
     "screenshot-1.png": "Dorsal view of N.rhombifer",
     "screenshot-2.png": "Lateral view of N.rhombifer\n"
   },
-  "volumeSize": 0
+  "volumeSize": 633671796
 }

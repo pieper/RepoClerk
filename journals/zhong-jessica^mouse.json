@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "zhong-jessica/mouse",
-  "journalUpdatedAt": "2026-03-24T14:00:32Z",
+  "journalUpdatedAt": "2026-03-24T14:31:34Z",
   "pushedAt": "2025-11-06T18:58:25Z",
   "openIssues": [],
   "openPRs": [],
@@ -78,5 +78,5 @@
   },
   "screenshotCount": 0,
   "screenshotCaptions": [],
-  "volumeSize": 0
+  "volumeSize": 50621209
 }
