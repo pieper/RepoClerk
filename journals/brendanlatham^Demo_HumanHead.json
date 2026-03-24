@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "brendanlatham/Demo_HumanHead",
-  "journalUpdatedAt": "2026-03-24T14:00:47Z",
+  "journalUpdatedAt": "2026-03-24T14:29:24Z",
   "pushedAt": "2026-01-03T23:16:47Z",
   "openIssues": [],
   "openPRs": [],
@@ -82,5 +82,5 @@
   "screenshotCaptions": {
     "screenshot-1.png": "Repository - Human head"
   },
-  "volumeSize": 0
+  "volumeSize": 6945984
 }
