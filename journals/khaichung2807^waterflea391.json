@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "khaichung2807/waterflea391",
-  "journalUpdatedAt": "2026-03-24T14:00:56Z",
+  "journalUpdatedAt": "2026-03-24T14:31:08Z",
   "pushedAt": "2026-03-04T22:11:38Z",
   "openIssues": [],
   "openPRs": [],
@@ -81,5 +81,5 @@
     "screenshot-1.png": "sagittal Daphnia",
     "screenshot-2.png": "Daphnia surface rendering"
   },
-  "volumeSize": 0
+  "volumeSize": 15830429
 }

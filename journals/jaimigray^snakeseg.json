@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "jaimigray/snakeseg",
-  "journalUpdatedAt": "2026-03-24T14:01:39Z",
+  "journalUpdatedAt": "2026-03-24T14:31:26Z",
   "pushedAt": "2025-10-07T16:46:14Z",
   "openIssues": [
     {
@@ -92,5 +92,5 @@
   },
   "screenshotCount": 0,
   "screenshotCaptions": [],
-  "volumeSize": 0
+  "volumeSize": 268376149
 }

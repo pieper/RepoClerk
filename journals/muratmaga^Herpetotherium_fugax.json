@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "muratmaga/Herpetotherium_fugax",
-  "journalUpdatedAt": "2026-03-24T14:00:07Z",
+  "journalUpdatedAt": "2026-03-24T14:30:26Z",
   "pushedAt": "2026-02-02T18:00:12Z",
   "openIssues": [],
   "openPRs": [],
@@ -84,5 +84,5 @@
     "screenshot-2.png": "Oblique ventral",
     "screenshot-3.png": "Without matrix"
   },
-  "volumeSize": 0
+  "volumeSize": 1713949073
 }

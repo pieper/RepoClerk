@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "khurds137-beep/MRI_demo_for_workshop",
-  "journalUpdatedAt": "2026-03-24T14:01:04Z",
+  "journalUpdatedAt": "2026-03-24T14:31:05Z",
   "pushedAt": "2026-01-03T23:16:39Z",
   "openIssues": [],
   "openPRs": [],
@@ -82,5 +82,5 @@
   "screenshotCaptions": {
     "screenshot-1.png": "screenshot"
   },
-  "volumeSize": 0
+  "volumeSize": 6945984
 }

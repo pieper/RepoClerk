@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "MichaelBennington/Bennington_SICB2026_MRIHead",
-  "journalUpdatedAt": "2026-03-24T14:01:46Z",
+  "journalUpdatedAt": "2026-03-24T14:30:51Z",
   "pushedAt": "2026-01-03T22:22:26Z",
   "openIssues": [
     {
@@ -103,5 +103,5 @@
   },
   "screenshotCount": 0,
   "screenshotCaptions": [],
-  "volumeSize": 0
+  "volumeSize": 6945984
 }

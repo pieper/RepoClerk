@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "kforsgren-1112013/KLF_SICB_2026",
-  "journalUpdatedAt": "2026-03-24T14:00:02Z",
+  "journalUpdatedAt": "2026-03-24T14:31:11Z",
   "pushedAt": "2026-01-03T22:48:52Z",
   "openIssues": [
     {
@@ -105,5 +105,5 @@
   "screenshotCaptions": {
     "screenshot-1.png": ""
   },
-  "volumeSize": 0
+  "volumeSize": 6945984
 }
