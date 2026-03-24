@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "muratmaga/Murat_SICB_2026",
-  "journalUpdatedAt": "2026-03-24T14:30:17Z",
+  "journalUpdatedAt": "2026-03-24T18:18:59Z",
   "pushedAt": "2026-01-08T21:33:21Z",
   "openIssues": [
     {
@@ -14,7 +14,20 @@
       ]
     }
   ],
-  "openPRs": [],
+  "openPRs": [
+    {
+      "number": 2,
+      "title": "issue-1",
+      "isDraft": true,
+      "url": "https://github.com/muratmaga/Murat_SICB_2026/pull/2",
+      "author": "pieper",
+      "closingIssue": {
+        "number": 1,
+        "title": "Issue for testing terminology",
+        "repoOwner": "muratmaga"
+      }
+    }
+  ],
   "accession": {
     "otherSubjectDescription": [
       "Please describe the subject of the data.",
