@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-03-25T00:21:26Z",
+  "generatedAt": "2026-03-25T06:23:45Z",
   "totalRepos": 63,
-  "totalOpenIssues": 128,
-  "totalOpenPRs": 77,
+  "totalOpenIssues": 119,
+  "totalOpenPRs": 75,
   "taxonomy": {
     "kingdom": {
       "Unknown": 63
@@ -24,7 +24,7 @@
     }
   },
   "activity": {
-    "last_day": 0,
+    "last_day": 1,
     "last_week": 1,
     "last_month": 19,
     "last_year": 63
@@ -32,10 +32,10 @@
   "repos": [
     {
       "nameWithOwner": "otocolobusmanul3816/Nerodia_Segmentation_Laboratory",
-      "pushedAt": "2026-03-18T19:53:18Z",
-      "journalUpdatedAt": "2026-03-24T14:32:14Z",
-      "openIssues": 30,
-      "openPRs": 12,
+      "pushedAt": "2026-03-25T05:13:35Z",
+      "journalUpdatedAt": "2026-03-25T06:23:33Z",
+      "openIssues": 21,
+      "openPRs": 10,
       "screenshotCount": 0,
       "screenshotCaptions": {
         "screenshot-1.png": "Dorsal view of N.rhombifer",
