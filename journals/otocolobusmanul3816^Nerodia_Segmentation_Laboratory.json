@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "otocolobusmanul3816/Nerodia_Segmentation_Laboratory",
-  "journalUpdatedAt": "2026-03-24T14:32:14Z",
-  "pushedAt": "2026-03-18T19:53:18Z",
+  "journalUpdatedAt": "2026-03-25T06:23:30Z",
+  "pushedAt": "2026-03-25T05:13:35Z",
   "openIssues": [
     {
       "number": 1,
@@ -14,48 +14,12 @@
       ]
     },
     {
-      "number": 2,
-      "title": "Franson L-Dentary",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/2",
-      "author": "WilliamFranson",
-      "assignees": [
-        "WilliamFranson"
-      ]
-    },
-    {
       "number": 3,
       "title": "Wheelton L&R - Splenial",
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/3",
       "author": "sophiawheelton",
       "assignees": [
         "sophiawheelton"
-      ]
-    },
-    {
-      "number": 4,
-      "title": "Klingler Parabasisphenoid",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/4",
-      "author": "Corinne8505",
-      "assignees": [
-        "Corinne8505"
-      ]
-    },
-    {
-      "number": 5,
-      "title": "Eliason Exoccipital",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/5",
-      "author": "CalebE975",
-      "assignees": [
-        "CalebE975"
-      ]
-    },
-    {
-      "number": 6,
-      "title": "Chaston L - Maxilla",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/6",
-      "author": "KoyChaston",
-      "assignees": [
-        "KoyChaston"
       ]
     },
     {
@@ -122,15 +86,6 @@
       ]
     },
     {
-      "number": 14,
-      "title": "Dooley R - Pterygoid",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/14",
-      "author": "deborahdelarosa",
-      "assignees": [
-        "deborahdelarosa"
-      ]
-    },
-    {
       "number": 15,
       "title": "Smith, R- Maxilla",
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/15",
@@ -146,15 +101,6 @@
       "author": "elliestew32-sudo",
       "assignees": [
         "elliestew32-sudo"
-      ]
-    },
-    {
-      "number": 17,
-      "title": "Numbers R-Quadrate",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/17",
-      "author": "hapymelz",
-      "assignees": [
-        "hapymelz"
       ]
     },
     {
@@ -185,15 +131,6 @@
       ]
     },
     {
-      "number": 21,
-      "title": "Culler L - prootic",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/21",
-      "author": "benculler",
-      "assignees": [
-        "benculler"
-      ]
-    },
-    {
       "number": 22,
       "title": "Hoggan Premaxilla",
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/22",
@@ -209,15 +146,6 @@
       "author": "EmilyG01",
       "assignees": [
         "EmilyG01"
-      ]
-    },
-    {
-      "number": 24,
-      "title": "Price - Parietal",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/24",
-      "author": "Tprice30",
-      "assignees": [
-        "Tprice30"
       ]
     },
     {
@@ -248,15 +176,6 @@
       ]
     },
     {
-      "number": 28,
-      "title": "Thorley R-Ectopterygoid",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/28",
-      "author": "CorruptSun",
-      "assignees": [
-        "CorruptSun"
-      ]
-    },
-    {
       "number": 30,
       "title": "Sessions L/R Angular",
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/30",
@@ -266,56 +185,20 @@
       ]
     },
     {
-      "number": 36,
-      "title": "Albrecht R-Palatine",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/36",
-      "author": "porterbalbrecht-tech",
+      "number": 50,
+      "title": "Pope_R-Prefrontal",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/50",
+      "author": "apope1303",
       "assignees": [
-        "porterbalbrecht-tech"
+        "apope1303"
       ]
     }
   ],
   "openPRs": [
     {
-      "number": 31,
-      "title": "issue-2",
-      "isDraft": false,
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/31",
-      "author": "WilliamFranson",
-      "closingIssue": {
-        "number": 2,
-        "title": "Franson L-Dentary",
-        "repoOwner": "otocolobusmanul3816"
-      }
-    },
-    {
-      "number": 32,
-      "title": "issue-17",
-      "isDraft": false,
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/32",
-      "author": "hapymelz",
-      "closingIssue": {
-        "number": 17,
-        "title": "Numbers R-Quadrate",
-        "repoOwner": "otocolobusmanul3816"
-      }
-    },
-    {
-      "number": 33,
-      "title": "issue-6",
-      "isDraft": false,
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/33",
-      "author": "KoyChaston",
-      "closingIssue": {
-        "number": 6,
-        "title": "Chaston L - Maxilla",
-        "repoOwner": "otocolobusmanul3816"
-      }
-    },
-    {
       "number": 34,
       "title": "issue-19",
-      "isDraft": false,
+      "isDraft": true,
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/34",
       "author": "morganlabrum",
       "closingIssue": {
@@ -325,21 +208,9 @@
       }
     },
     {
-      "number": 35,
-      "title": "issue-14",
-      "isDraft": false,
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/35",
-      "author": "deborahdelarosa",
-      "closingIssue": {
-        "number": 14,
-        "title": "Dooley R - Pterygoid",
-        "repoOwner": "otocolobusmanul3816"
-      }
-    },
-    {
       "number": 37,
       "title": "issue-20",
-      "isDraft": false,
+      "isDraft": true,
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/37",
       "author": "jacobhackman5",
       "closingIssue": {
@@ -349,21 +220,9 @@
       }
     },
     {
-      "number": 38,
-      "title": "issue-36",
-      "isDraft": false,
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/38",
-      "author": "porterbalbrecht-tech",
-      "closingIssue": {
-        "number": 36,
-        "title": "Albrecht R-Palatine",
-        "repoOwner": "otocolobusmanul3816"
-      }
-    },
-    {
       "number": 39,
       "title": "issue-10",
-      "isDraft": false,
+      "isDraft": true,
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/39",
       "author": "a02423885-cloud",
       "closingIssue": {
@@ -373,33 +232,9 @@
       }
     },
     {
-      "number": 40,
-      "title": "issue-5",
-      "isDraft": false,
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/40",
-      "author": "CalebE975",
-      "closingIssue": {
-        "number": 5,
-        "title": "Eliason Exoccipital",
-        "repoOwner": "otocolobusmanul3816"
-      }
-    },
-    {
-      "number": 41,
-      "title": "issue-4",
-      "isDraft": false,
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/41",
-      "author": "Corinne8505",
-      "closingIssue": {
-        "number": 4,
-        "title": "Klingler Parabasisphenoid",
-        "repoOwner": "otocolobusmanul3816"
-      }
-    },
-    {
       "number": 42,
       "title": "issue-3",
-      "isDraft": false,
+      "isDraft": true,
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/42",
       "author": "sophiawheelton",
       "closingIssue": {
@@ -411,12 +246,72 @@
     {
       "number": 43,
       "title": "issue-18",
-      "isDraft": false,
+      "isDraft": true,
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/43",
       "author": "katehalskool-lab",
       "closingIssue": {
         "number": 18,
         "title": "Halbritter L- Pterygoid",
+        "repoOwner": "otocolobusmanul3816"
+      }
+    },
+    {
+      "number": 45,
+      "title": "issue-26",
+      "isDraft": true,
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/45",
+      "author": "lizzykocherhans",
+      "closingIssue": {
+        "number": 26,
+        "title": "Kocherhans nasal",
+        "repoOwner": "otocolobusmanul3816"
+      }
+    },
+    {
+      "number": 47,
+      "title": "issue-25",
+      "isDraft": true,
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/47",
+      "author": "mweav27",
+      "closingIssue": {
+        "number": 25,
+        "title": "Weaver L - Prefrontal",
+        "repoOwner": "otocolobusmanul3816"
+      }
+    },
+    {
+      "number": 49,
+      "title": "issue-27",
+      "isDraft": true,
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/49",
+      "author": "hollyt-1125",
+      "closingIssue": {
+        "number": 27,
+        "title": "Talbot Right Compound",
+        "repoOwner": "otocolobusmanul3816"
+      }
+    },
+    {
+      "number": 51,
+      "title": "issue-11",
+      "isDraft": true,
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/51",
+      "author": "sydbaird04-ai",
+      "closingIssue": {
+        "number": 11,
+        "title": "Baird L-Palatine",
+        "repoOwner": "otocolobusmanul3816"
+      }
+    },
+    {
+      "number": 53,
+      "title": "issue-50",
+      "isDraft": false,
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/53",
+      "author": "apope1303",
+      "closingIssue": {
+        "number": 50,
+        "title": "Pope_R-Prefrontal",
         "repoOwner": "otocolobusmanul3816"
       }
     }
