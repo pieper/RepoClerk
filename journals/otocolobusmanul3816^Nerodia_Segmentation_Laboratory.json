@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "otocolobusmanul3816/Nerodia_Segmentation_Laboratory",
-  "journalUpdatedAt": "2026-03-25T06:23:33Z",
-  "pushedAt": "2026-03-25T05:13:35Z",
+  "journalUpdatedAt": "2026-03-26T00:23:54Z",
+  "pushedAt": "2026-03-25T20:44:49Z",
   "openIssues": [
     {
       "number": 1,
@@ -140,15 +140,6 @@
       ]
     },
     {
-      "number": 23,
-      "title": "Gilbert L - Quadrate",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/23",
-      "author": "EmilyG01",
-      "assignees": [
-        "EmilyG01"
-      ]
-    },
-    {
       "number": 25,
       "title": "Weaver L - Prefrontal",
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/25",
@@ -192,6 +183,15 @@
       "assignees": [
         "apope1303"
       ]
+    },
+    {
+      "number": 55,
+      "title": "Austin R - Prefrontal",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/55",
+      "author": "JAustin24USU",
+      "assignees": [
+        "JAustin24USU"
+      ]
     }
   ],
   "openPRs": [
@@ -210,7 +210,7 @@
     {
       "number": 37,
       "title": "issue-20",
-      "isDraft": true,
+      "isDraft": false,
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/37",
       "author": "jacobhackman5",
       "closingIssue": {
@@ -258,7 +258,7 @@
     {
       "number": 45,
       "title": "issue-26",
-      "isDraft": true,
+      "isDraft": false,
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/45",
       "author": "lizzykocherhans",
       "closingIssue": {
@@ -306,12 +306,60 @@
     {
       "number": 53,
       "title": "issue-50",
-      "isDraft": false,
+      "isDraft": true,
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/53",
       "author": "apope1303",
       "closingIssue": {
         "number": 50,
         "title": "Pope_R-Prefrontal",
+        "repoOwner": "otocolobusmanul3816"
+      }
+    },
+    {
+      "number": 56,
+      "title": "issue-16",
+      "isDraft": true,
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/56",
+      "author": "elliestew32-sudo",
+      "closingIssue": {
+        "number": 16,
+        "title": "Stewart Septomaxilla",
+        "repoOwner": "otocolobusmanul3816"
+      }
+    },
+    {
+      "number": 57,
+      "title": "issue-7",
+      "isDraft": false,
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/57",
+      "author": "savitzky",
+      "closingIssue": {
+        "number": 7,
+        "title": "Savitzky stapes",
+        "repoOwner": "otocolobusmanul3816"
+      }
+    },
+    {
+      "number": 58,
+      "title": "issue-22",
+      "isDraft": false,
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/58",
+      "author": "alyssahoggan",
+      "closingIssue": {
+        "number": 22,
+        "title": "Hoggan Premaxilla",
+        "repoOwner": "otocolobusmanul3816"
+      }
+    },
+    {
+      "number": 59,
+      "title": "issue-55",
+      "isDraft": true,
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/59",
+      "author": "JAustin24USU",
+      "closingIssue": {
+        "number": 55,
+        "title": "Austin R - Prefrontal",
         "repoOwner": "otocolobusmanul3816"
       }
     }
