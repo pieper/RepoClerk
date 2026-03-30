@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "otocolobusmanul3816/Nerodia_Segmentation_Laboratory",
-  "journalUpdatedAt": "2026-03-26T00:23:56Z",
-  "pushedAt": "2026-03-25T20:44:49Z",
+  "journalUpdatedAt": "2026-03-30T18:19:23Z",
+  "pushedAt": "2026-03-30T15:39:17Z",
   "openIssues": [
     {
       "number": 1,
@@ -11,24 +11,6 @@
       "author": "otocolobusmanul3816",
       "assignees": [
         "otocolobusmanul3816"
-      ]
-    },
-    {
-      "number": 3,
-      "title": "Wheelton L&R - Splenial",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/3",
-      "author": "sophiawheelton",
-      "assignees": [
-        "sophiawheelton"
-      ]
-    },
-    {
-      "number": 7,
-      "title": "Savitzky stapes",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/7",
-      "author": "savitzky",
-      "assignees": [
-        "savitzky"
       ]
     },
     {
@@ -122,24 +104,6 @@
       ]
     },
     {
-      "number": 20,
-      "title": "Hackman Frontal",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/20",
-      "author": "jacobhackman5",
-      "assignees": [
-        "jacobhackman5"
-      ]
-    },
-    {
-      "number": 22,
-      "title": "Hoggan Premaxilla",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/22",
-      "author": "alyssahoggan",
-      "assignees": [
-        "alyssahoggan"
-      ]
-    },
-    {
       "number": 25,
       "title": "Weaver L - Prefrontal",
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/25",
@@ -192,33 +156,18 @@
       "assignees": [
         "JAustin24USU"
       ]
+    },
+    {
+      "number": 62,
+      "title": "Lambert: L - Ectopterygoid",
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/62",
+      "author": "whitefang1942",
+      "assignees": [
+        "whitefang1942"
+      ]
     }
   ],
   "openPRs": [
-    {
-      "number": 34,
-      "title": "issue-19",
-      "isDraft": true,
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/34",
-      "author": "morganlabrum",
-      "closingIssue": {
-        "number": 19,
-        "title": "Labrum Supraoccipital",
-        "repoOwner": "otocolobusmanul3816"
-      }
-    },
-    {
-      "number": 37,
-      "title": "issue-20",
-      "isDraft": false,
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/37",
-      "author": "jacobhackman5",
-      "closingIssue": {
-        "number": 20,
-        "title": "Hackman Frontal",
-        "repoOwner": "otocolobusmanul3816"
-      }
-    },
     {
       "number": 39,
       "title": "issue-10",
@@ -228,18 +177,6 @@
       "closingIssue": {
         "number": 10,
         "title": "Preston Right Dentary",
-        "repoOwner": "otocolobusmanul3816"
-      }
-    },
-    {
-      "number": 42,
-      "title": "issue-3",
-      "isDraft": true,
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/42",
-      "author": "sophiawheelton",
-      "closingIssue": {
-        "number": 3,
-        "title": "Wheelton L&R - Splenial",
         "repoOwner": "otocolobusmanul3816"
       }
     },
@@ -258,7 +195,7 @@
     {
       "number": 45,
       "title": "issue-26",
-      "isDraft": false,
+      "isDraft": true,
       "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/45",
       "author": "lizzykocherhans",
       "closingIssue": {
@@ -324,30 +261,6 @@
       "closingIssue": {
         "number": 16,
         "title": "Stewart Septomaxilla",
-        "repoOwner": "otocolobusmanul3816"
-      }
-    },
-    {
-      "number": 57,
-      "title": "issue-7",
-      "isDraft": false,
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/57",
-      "author": "savitzky",
-      "closingIssue": {
-        "number": 7,
-        "title": "Savitzky stapes",
-        "repoOwner": "otocolobusmanul3816"
-      }
-    },
-    {
-      "number": 58,
-      "title": "issue-22",
-      "isDraft": false,
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/58",
-      "author": "alyssahoggan",
-      "closingIssue": {
-        "number": 22,
-        "title": "Hoggan Premaxilla",
         "repoOwner": "otocolobusmanul3816"
       }
     },
