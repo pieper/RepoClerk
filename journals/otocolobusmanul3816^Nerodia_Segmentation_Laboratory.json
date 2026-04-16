@@ -1,36 +1,9 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "otocolobusmanul3816/Nerodia_Segmentation_Laboratory",
-  "journalUpdatedAt": "2026-03-30T18:19:25Z",
-  "pushedAt": "2026-03-30T15:39:17Z",
+  "journalUpdatedAt": "2026-04-16T18:25:58Z",
+  "pushedAt": "2026-04-16T15:46:39Z",
   "openIssues": [
-    {
-      "number": 1,
-      "title": "Houstoun Cervical Vertebrae",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/1",
-      "author": "otocolobusmanul3816",
-      "assignees": [
-        "otocolobusmanul3816"
-      ]
-    },
-    {
-      "number": 8,
-      "title": "PerryLandR-postorbital",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/8",
-      "author": "Aubynp",
-      "assignees": [
-        "Aubynp"
-      ]
-    },
-    {
-      "number": 9,
-      "title": "murat test",
-      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/issues/9",
-      "author": "muratmaga",
-      "assignees": [
-        "muratmaga"
-      ]
-    },
     {
       "number": 10,
       "title": "Preston Right Dentary",
@@ -273,6 +246,18 @@
       "closingIssue": {
         "number": 55,
         "title": "Austin R - Prefrontal",
+        "repoOwner": "otocolobusmanul3816"
+      }
+    },
+    {
+      "number": 63,
+      "title": "issue-62",
+      "isDraft": true,
+      "url": "https://github.com/otocolobusmanul3816/Nerodia_Segmentation_Laboratory/pull/63",
+      "author": "whitefang1942",
+      "closingIssue": {
+        "number": 62,
+        "title": "Lambert: L - Ectopterygoid",
         "repoOwner": "otocolobusmanul3816"
       }
     }
