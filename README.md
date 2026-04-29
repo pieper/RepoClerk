@@ -1,10 +1,10 @@
 # RepoClerk
 
-RepoClerk is a caching and coordination layer for the [MorphoDepot](https://github.com/MorphoDepot) Slicer extension. A public dashboard showing the overall health and activity of the MorphoDepot ecosystem is available at **[pieper.github.io/RepoClerk](https://pieper.github.io/RepoClerk/)**.
+RepoClerk is a caching and coordination layer for the [MorphoDepot](https://github.com/MorphoDepot) Slicer extension. A public dashboard showing the overall health and activity of the MorphoDepot ecosystem is available at **[MorphoDepot.github.io/RepoClerk](https://MorphoDepot.github.io/RepoClerk/)**.
 
 ## Dashboard
 
-The [MorphoDepot Dashboard](https://pieper.github.io/RepoClerk/) is a static web page served via GitHub Pages, automatically regenerated after every journal update. It provides a public view of the MorphoDepot ecosystem without requiring a GitHub account or the Slicer extension:
+The [MorphoDepot Dashboard](https://MorphoDepot.github.io/RepoClerk/) is a static web page served via GitHub Pages, automatically regenerated after every journal update. It provides a public view of the MorphoDepot ecosystem without requiring a GitHub account or the Slicer extension:
 
 - **Screenshot gallery** — rotating carousel of specimen images drawn from all repositories
 - **Summary bar** — total repository, open issue, and open PR counts at a glance
