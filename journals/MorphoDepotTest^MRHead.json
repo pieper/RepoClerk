@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "MorphoDepotTest/MRHead",
-  "journalUpdatedAt": "2026-04-28T00:34:04Z",
-  "pushedAt": "2025-08-26T21:48:58Z",
+  "journalUpdatedAt": "2026-04-30T02:31:22Z",
+  "pushedAt": "2026-04-29T22:53:05Z",
   "openIssues": [],
   "openPRs": [],
   "accession": {
@@ -66,6 +66,8 @@
     "scanSpacing": "(1.0, 1.0, 1.2999954223632812)"
   },
   "screenshotCount": 0,
-  "screenshotCaptions": [],
+  "screenshotCaptions": {
+    "screenshot-1.png": "with head"
+  },
   "volumeSize": 6945984
 }
