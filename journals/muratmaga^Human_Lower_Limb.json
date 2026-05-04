@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "muratmaga/Human_Lower_Limb",
-  "journalUpdatedAt": "2026-04-28T00:34:08Z",
-  "pushedAt": "2026-04-26T19:56:58Z",
+  "journalUpdatedAt": "2026-05-04T19:22:15Z",
+  "pushedAt": "2026-05-04T17:47:42Z",
   "openIssues": [],
   "openPRs": [],
   "accession": {
@@ -81,7 +81,8 @@
   },
   "screenshotCount": 0,
   "screenshotCaptions": {
-    "screenshot-1.png": ""
+    "screenshot-1.png": "",
+    "screenshot-2.png": ""
   },
   "volumeSize": 56167463
 }
