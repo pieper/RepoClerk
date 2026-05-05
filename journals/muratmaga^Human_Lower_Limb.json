@@ -1,10 +1,33 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "muratmaga/Human_Lower_Limb",
-  "journalUpdatedAt": "2026-05-04T19:22:15Z",
-  "pushedAt": "2026-05-04T17:47:42Z",
-  "openIssues": [],
-  "openPRs": [],
+  "journalUpdatedAt": "2026-05-05T02:22:15Z",
+  "pushedAt": "2026-05-04T19:58:45Z",
+  "openIssues": [
+    {
+      "number": 47,
+      "title": "test after release",
+      "url": "https://github.com/muratmaga/Human_Lower_Limb/issues/47",
+      "author": "muratmaga",
+      "assignees": [
+        "muratmaga"
+      ]
+    }
+  ],
+  "openPRs": [
+    {
+      "number": 48,
+      "title": "issue-47",
+      "isDraft": false,
+      "url": "https://github.com/muratmaga/Human_Lower_Limb/pull/48",
+      "author": "muratmaga",
+      "closingIssue": {
+        "number": 47,
+        "title": "test after release",
+        "repoOwner": "muratmaga"
+      }
+    }
+  ],
   "accession": {
     "otherSubjectDescription": [
       "Please describe the subject of the data.",
