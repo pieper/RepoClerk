@@ -1,33 +1,10 @@
 {
   "schemaVersion": 1,
   "nameWithOwner": "MorphoDepotTesting/delete-e15",
-  "journalUpdatedAt": "2026-04-28T00:33:40Z",
-  "pushedAt": "2026-03-11T17:13:37Z",
-  "openIssues": [
-    {
-      "number": 1,
-      "title": "test new URL format",
-      "url": "https://github.com/MorphoDepotTesting/delete-e15/issues/1",
-      "author": "muratmaga",
-      "assignees": [
-        "muratmaga"
-      ]
-    }
-  ],
-  "openPRs": [
-    {
-      "number": 2,
-      "title": "issue-1",
-      "isDraft": false,
-      "url": "https://github.com/MorphoDepotTesting/delete-e15/pull/2",
-      "author": "muratmaga",
-      "closingIssue": {
-        "number": 1,
-        "title": "test new URL format",
-        "repoOwner": "MorphoDepotTesting"
-      }
-    }
-  ],
+  "journalUpdatedAt": "2026-05-08T02:34:56Z",
+  "pushedAt": "2026-05-07T19:21:49Z",
+  "openIssues": [],
+  "openPRs": [],
   "accession": {
     "otherSubjectDescription": [
       "Please describe the subject of the data.",
